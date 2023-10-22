@@ -10,8 +10,8 @@ import (
 )
 
 func TestUpdateGetData(t *testing.T) {
-	mconn := SetConnection("Mongo_URL", "PasabarDB")
-	datagedung := GetAllBangunanLineString(mconn, "PasabarDB")
+	mconn := SetConnection("MONGOULBI", "petapedia")
+	datagedung := GetAllBangunanLineString(mconn, "petapedia")
 	fmt.Println(datagedung)
 }
 
