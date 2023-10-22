@@ -10,8 +10,8 @@ import (
 )
 
 func TestUpdateGetData(t *testing.T) {
-	mconn := SetConnection("MONGOSTRING", "petapedia")
-	datagedung := GetAllBangunanLineString(mconn, "petapedia")
+	mconn := SetConnection("MONGOSTRING", "pasabar")
+	datagedung := GetAllBangunanLineString(mconn, "pasabar")
 	fmt.Println(datagedung)
 }
 
@@ -29,14 +29,14 @@ func TestGeneratePrivateKeyPaseto(t *testing.T) {
 	privateKey, publicKey := watoken.GenerateKey()
 	fmt.Println(privateKey)
 	fmt.Println(publicKey)
-	hasil, err := watoken.Encode("petped", privateKey)
+	hasil, err := watoken.Encode("pasbar", privateKey)
 	fmt.Println(hasil, err)
 }
 
 func TestHashFunction(t *testing.T) {
-	mconn := SetConnection("MONGOSTRING", "petapedia")
+	mconn := SetConnection("MONGOSTRING", "pasabar")
 	var userdata User
-	userdata.Username = "petped"
+	userdata.Username = "pasbar"
 	userdata.Password = "secret"
 
 	filter := bson.M{"username": userdata.Username}
@@ -50,9 +50,9 @@ func TestHashFunction(t *testing.T) {
 }
 
 func TestIsPasswordValid(t *testing.T) {
-	mconn := SetConnection("MONGOSTRING", "petapedia")
+	mconn := SetConnection("MONGOSTRING", "pasabar")
 	var userdata User
-	userdata.Username = "petped"
+	userdata.Username = "pasbar"
 	userdata.Password = "secret"
 	anu := IsPasswordValid(mconn, "user", userdata)
 	fmt.Println(anu)
