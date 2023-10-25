@@ -9,16 +9,15 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 )
 
-func TestUpdateGetData(t *testing.T) {
-	mconn := SetConnection("MONGOSTRING", "pasabar")
-	datagedung := GetAllBangunanLineString(mconn, "pasabar")
-	fmt.Println(datagedung)
-}
+// func TestUpdateGetData(t *testing.T) {
+// 	mconn := SetConnection("MONGOSTRING", "healhero_db")
+// 	datagedung := GetAllBangunanLineString(mconn, "healhero_db")
+// 	fmt.Println(datagedung)
+// }
 
 func TestGeneratePasswordHash(t *testing.T) {
-	password := "1214015"
+	password := "pasabardotcom"
 	hash, _ := HashPassword(password) // ignore error for the sake of simplicity
-
 	fmt.Println("Password:", password)
 	fmt.Println("Hash:    ", hash)
 
@@ -29,15 +28,15 @@ func TestGeneratePrivateKeyPaseto(t *testing.T) {
 	privateKey, publicKey := watoken.GenerateKey()
 	fmt.Println(privateKey)
 	fmt.Println(publicKey)
-	hasil, err := watoken.Encode("pasbar", privateKey)
+	hasil, err := watoken.Encode("yascoba", privateKey)
 	fmt.Println(hasil, err)
 }
 
 func TestHashFunction(t *testing.T) {
 	mconn := SetConnection("MONGOSTRING", "pasabar")
 	var userdata User
-	userdata.Username = "pasbar"
-	userdata.Password = "secret"
+	userdata.Username = "yascoba"
+	userdata.Password = "pasabardotcom"
 
 	filter := bson.M{"username": userdata.Username}
 	res := atdb.GetOneDoc[User](mconn, "user", filter)
@@ -52,8 +51,19 @@ func TestHashFunction(t *testing.T) {
 func TestIsPasswordValid(t *testing.T) {
 	mconn := SetConnection("MONGOSTRING", "pasabar")
 	var userdata User
-	userdata.Username = "pasbar"
-	userdata.Password = "secret"
+	userdata.Username = "yascoba"
+	userdata.Password = "pasabardotcom"
+
 	anu := IsPasswordValid(mconn, "user", userdata)
 	fmt.Println(anu)
+}
+
+func TestInsertUser(t *testing.T) {
+	mconn := SetConnection("MONGOSTRING", "pasabar")
+	var userdata User
+	userdata.Username = "yascoba"
+	userdata.Password = "pasabardotcom"
+
+	nama := InsertUser(mconn, "user", userdata)
+	fmt.Println(nama)
 }
