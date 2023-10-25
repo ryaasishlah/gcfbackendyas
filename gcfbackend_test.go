@@ -33,13 +33,13 @@ func TestGeneratePrivateKeyPaseto(t *testing.T) {
 }
 
 func TestHashFunction(t *testing.T) {
-	mconn := SetConnection("MONGOSTRING", "pasabar")
+	mconn := SetConnection("MONGOSTRING", "pasabar1")
 	var userdata User
 	userdata.Username = "yascoba"
 	userdata.Password = "pasabardotcom"
 
 	filter := bson.M{"username": userdata.Username}
-	res := atdb.GetOneDoc[User](mconn, "user", filter)
+	res := atdb.GetOneDoc[User](mconn, "user1", filter)
 	fmt.Println("Mongo User Result: ", res)
 	hash, _ := HashPassword(userdata.Password)
 	fmt.Println("Hash Password : ", hash)
@@ -49,21 +49,21 @@ func TestHashFunction(t *testing.T) {
 }
 
 func TestIsPasswordValid(t *testing.T) {
-	mconn := SetConnection("MONGOSTRING", "pasabar")
+	mconn := SetConnection("MONGOSTRING", "pasabar1")
 	var userdata User
 	userdata.Username = "yascoba"
 	userdata.Password = "pasabardotcom"
 
-	anu := IsPasswordValid(mconn, "user", userdata)
+	anu := IsPasswordValid(mconn, "user1", userdata)
 	fmt.Println(anu)
 }
 
 func TestInsertUser(t *testing.T) {
-	mconn := SetConnection("MONGOSTRING", "pasabar")
+	mconn := SetConnection("MONGOSTRING", "pasabar1")
 	var userdata User
 	userdata.Username = "yascoba"
 	userdata.Password = "pasabardotcom"
 
-	nama := InsertUser(mconn, "user", userdata)
+	nama := InsertUser(mconn, "user1", userdata)
 	fmt.Println(nama)
 }
